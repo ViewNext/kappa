@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+    	<head>
+    		<meta charset="UTF-8">
+    		<title>POC Call Center</title>
+    		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    		<!--
+    			<link rel="shortcut icon" href="images/favicon.png">
+    			<link rel="apple-touch-icon" href="images/apple-touch-icon.png"> 
+    		-->
+		    <style>
+		        /* following two viewport lines are equivalent to meta viewport statement above, and is needed for Windows */
+		        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+		        @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+		        @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+		        /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+		    </style>
+			<!--<base src="//satellite-cms-des.int.si.orange.es" />-->
+			<base src="http://localhost" />
+			<link href="https://fonts.googleapis.com/css?family=Poiret+One|Open+Sans" rel="stylesheet" type="text/css">
+			<link rel="stylesheet" href="/orangeLib/ionic/css/ionic.css" />
+			<link rel="stylesheet" href="/orangeLib/css/main.css" />
+			<link rel="stylesheet" href="/orangeLib/css/angular-chart.css">
+			<link rel="stylesheet" href="./css/site.css" />
+			
+			<script src="/orangeLib/ionic/js/ionic.bundle.min.js"></script>
+			<script src="./js/initOptions.js"></script>
+			<script src="/orangeLib/appFactories.js"></script>
+			
+			<script src="/orangeLib/js/profile/profileData.js"></script>
+			<script src="/orangeLib/js/login/inputUserLevel.js"></script>			
+			<script src="/orangeLib/js/login/loginUser.js"></script>		
+			<script src="/orangeLib/js/invoice/invoiceList.js"></script>		
+			<script src="/orangeLib/js/graphic/chartInvoices.js"></script>	
+			<script src="/orangeLib/js/invoice/invoiceDetailNav.js"></script>	
+															
+    		<script src="/orangeLib/WebServiceFactory.js"></script>
+			<script src="/orangeLib/restApiFactory.js"></script>
+			<script src="/orangeLib/messages.js"></script>
+			<script src="/orangeLib/Chart.js"></script>	
+			<script src="/orangeLib/ionic/js/angular/angular-chart.js"></script>	
+			
+			<script src="./js/main.js"></script>
+			
+    	</head>
+    	
+    	<body ng-app="kappa">
+    		<ion-header class="bar-positive nav-title-slide-ios7"></ion-header>
+  			<ion-nav-view class="has-header">
+		        <ion-header-bar class="bar bar-positive nav-title-slide-ios7">
+		        	<img src="./images/thumbnail.png" alt="imagen Phone">
+		        	<h1><span>Aplicación</span> Call Center</h1>
+		        </ion-header-bar>
+		            <ion-view title="Detalle de facturación y consumos">
+		                <ion-content class="padding has-header" overflow-scroll='true'>
+		 					<div class="list">
+								<div class="sepShadow">
+									<div>
+									<div class="input-user-level" userlevel="BPaaSCatalog.userlevel=0" /></div>
+		                        	<div class="login-user"  msisdn="BPaaSCatalog.msisdn" action="Ver facturas" /></div>
+		                        </div>	
+										<div ng-show="BPaaSCatalog.msisdn > 600000000" class="profile-data posRel" msisdn="{{BPaaSCatalog.msisdn}}" showDetails='yes' onSelect='services' /></div>
+										<div class='row'>
+											<div class='col col-50'>
+												<div ng-show="BPaaSCatalog.msisdn > 600000000" class="invoice-list" msisdn="{{BPaaSCatalog.msisdn}}" /></div>
+											</div>
+											<div class='col col-50'>
+												<div ng-show="BPaaSCatalog.msisdn > 600000000" class='chart-invoices' msisdn="{{BPaaSCatalog.msisdn}}"></div>
+											</div>
+										</div>
+											<div  class="invoice-detail-nav" invoice={{BPaaSCatalog.invoiceDetailRequest}} /></div>
+		 					</div>	
+						</ion-content>
+			        </ion-view>
+			</ion-nav-view>
+    	</body>
+</html>
